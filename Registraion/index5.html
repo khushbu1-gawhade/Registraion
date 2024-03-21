@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style5.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="wrapper">
+            <div class="login">
+                <h1>OTP Will Generate</h1>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="number"  />
+                        <input type="number" disabled />
+                        <input type="number"  disabled/>
+                        <input type="number"  disabled/>
+                        <input type="number" disabled />
+                        <input type="number" disabled />
+
+
+                    </div>
+                </form>
+                <button type="submit" id="btn"  onclick="auth()">Submit</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const inputs = document.querySelectorAll("input"),
+        button = document.querySelector("button");
+
+        generateOTP();
+        function generateOTP(){
+            alert(
+                Math.floor(Math.random()*10)+" "+
+                Math.floor(Math.random()*10)+" "+
+                Math.floor(Math.random()*10)+" "+
+                Math.floor(Math.random()*10)+" "+
+                Math.floor(Math.random()*10)+" "+
+                Math.floor(Math.random()*10)
+            );
+            inputs[0].focus();
+           
+        }
+        inputs.forEach((input,index)=>{
+          input.addEventListener("keyup",function(e){
+            const currentinput = input,
+            nextinput = input.nextElementSibling,
+            previnput = input.previousElementSibling;
+
+            if(nextinput && nextinput.hasAttribute("disabled")&&
+            currentinput.value!==""){
+                nextinput.removeAttribute("disabled",true);
+                nextinput.focus();
+            }
+
+          });
+        });
+        function auth(){
+            window.location.assign("index2.html");
+        }
+
+    </script>
+</body>
+
+</html>
